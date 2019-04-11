@@ -15,14 +15,14 @@ let locale = [{
     Country: "SYDNEY",
     TimeZone: "Australia/Sydney"
 }]
-let monthEn = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+let monthEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 let zone = document.querySelector('.clock');
 
 /**
  * @function
  * @param {string} day - 時間
  * @param {string} zone - 地區
- * @param {boolean} hour12 - 顯示是否為12小時制
+ * @param {boolean} hour12 - 顯示是否為12小時制，24小時制沒有ampm
  */
 function getLocaleStr(day, zone, hour12) {
     return day.toLocaleString('en-US', {
@@ -38,12 +38,13 @@ function getLocaleStr(day, zone, hour12) {
 function getTimeZone() {
     let dayTime = new Date();
     let isNight = false;
+    zone.innerHTML = '';
     locale.forEach(e => {
         let areaTime = getLocaleStr(dayTime, e.TimeZone, false).split(' ');
         let amPm = getLocaleStr(dayTime, e.TimeZone, true).split(' ')[2]; //取得ampm
         let day = areaTime[0];
         let time = areaTime[1].split(':');
-        let timeZoneDay = `${day.split('/')[0]} ${monthEn[day.split('/')[1]-1]}. ${day.split('/')[2]}`
+        let timeZoneDay = ` ${day.split('/')[1]} ${monthEn[day.split('/')[0]-1]}. ${day.split('/')[2]}` 
         if (amPm === 'PM') {
             isNight = true;
         }
@@ -52,4 +53,4 @@ function getTimeZone() {
 }
 
 getTimeZone();
-setTimeout(getTimeZone, 60 * 1000); //每分鐘更新一次
+setInterval(getTimeZone,1000*60); //每分鐘更新一次 
