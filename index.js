@@ -1,18 +1,19 @@
+'use strict'
 //建立基本資料
 let locale = [{
     Country: "New York",
     TimeZone: "America/New_York"
 }, {
-    Country: "LONDON",
+    Country: "London",
     TimeZone: "Europe/LONDON"
 }, {
-    Country: "BANGKOK",
+    Country: "Bangkok",
     TimeZone: "Asia/Bangkok"
 }, {
-    Country: "TAIWAN",
+    Country: "Taiwan",
     TimeZone: "Asia/Taipei"
 }, {
-    Country: "SYDNEY",
+    Country: "Sydney",
     TimeZone: "Australia/Sydney"
 }]
 let monthEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -44,13 +45,15 @@ function getTimeZone() {
         let amPm = getLocaleStr(dayTime, e.TimeZone, true).split(' ')[2]; //取得ampm
         let day = areaTime[0];
         let time = areaTime[1].split(':');
-        let timeZoneDay = ` ${day.split('/')[1]} ${monthEn[day.split('/')[0]-1]}. ${day.split('/')[2]}` 
+        let timeZoneDay = ` ${day.split('/')[1]} ${monthEn[day.split('/')[0]-1]}. ${day.split('/')[2]}`
         if (amPm === 'PM') {
             isNight = true;
+        } else {
+            isNight = false;
         }
-        zone.innerHTML += `<div class="zone ${isNight?'pm':'am'}"><div><h3>${e.Country}</h3><div>${timeZoneDay}</div></div><div><p>${time[0]}:${time[1]}</p></div></div>`
+        zone.innerHTML += `<div class="zone ${isNight?'pm':'am'}"><div><h2>${e.Country}</h2><div>${timeZoneDay}</div></div><div><p>${time[0]}:${time[1]}</p></div></div>`
     })
 }
 
 getTimeZone();
-setInterval(getTimeZone,1000*60); //每分鐘更新一次 
+setInterval(getTimeZone, 1000 * 60); //每分鐘更新一次 

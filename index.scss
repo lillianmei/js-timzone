@@ -1,65 +1,56 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 .timezone {
-  background-color: #ddd;
-  height: 100vh;
-  padding-top: 30px;
-
-
-  .clock-box {
-    width: 30%;
-    margin: 0 auto;
-
-    h1 {
-      font-weight: 600;
-      text-align: center;
-      border-top: 10px solid #000;
-      border-bottom: 10px solid #000;
-    }
-
-    .clock {
-      border: 1px solid #000;
-      margin-top: 20px;
-
-      .zone {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 5px 0;
-        font-weight: 600;
-
-        &:not(:last-child) {
-          border-bottom: 1px solid #000;
+    background-color: #ddd;
+    height: 100vh;
+    padding-top: 30px;
+    .clock-box {
+        width: 30%;
+        margin: 0 auto;
+        h1 {
+            font-weight: 600;
+            text-align: center;
+            border-top: 10px solid #000;
+            border-bottom: 10px solid #000;
         }
-
-        >div {
-          width: 30%;
-        }
-
-        h3 {
-          margin: 0;
-          font-weight: 600;
-
-          &~div {
-            font-style: italic;
-          }
-        }
-
-        p {
-          margin: 0;
-          font-size: 3em;
-        }
-      }
-        .am{
-            background-color: #fff;
-            color: #000;
-        }
-        .pm{
-            background-color: #000;
-            color: #fff;
+        .clock {
+            border: 1px solid #000;
+            margin-top: 20px;
+            .zone {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 5px 0;
+                font-weight: 600;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #000;
+                }
+                >div {
+                    width: 30%;
+                }
+                h2 {
+                    margin: 0;
+                    font-size: 1.5em;
+                    &~div {
+                        font-style: italic;
+                    }
+                }
+                p {
+                    margin: 0;
+                    font-size: 3em;
+                }
+            }
+            .am {
+                background-color: #fff;
+                color: #000;
+            }
+            .pm {
+                background-color: #000;
+                color: #fff;
+            }
         }
     }
-  }
 }
